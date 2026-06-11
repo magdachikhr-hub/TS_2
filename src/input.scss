@@ -8,10 +8,28 @@ $thinTextColor: #4e6e7e;
 $spanBox: #6b94a8;
 $lightYellow: #f9fae0;
 $resultsBg: #0e2431;
+$font: "Plus Jakarta Sans", sans-serif;
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: $font;
+}
+
+main {
+  background-color: $background;
+  height: 100vh;
+  div.container {
+    display: flex;
+    flex-direction: column;
+
+    div.calculator {
+      background-color: $white;
+      padding: 32px 24px;
+    }
+    div.output {
+      background-color: $darkBlue;
+    }
+  }
 }

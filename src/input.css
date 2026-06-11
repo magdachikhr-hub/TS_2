@@ -4,4 +4,20 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+main {
+  background-color: #e4f3fd;
+  height: 100vh;
+}
+main div.container {
+  display: flex;
+  flex-direction: column;
+}
+main div.container div.calculator {
+  background-color: #ffffff;
+  padding: 32px 24px;
+}
+main div.container div.output {
+  background-color: #133041;
 }/*# sourceMappingURL=input.css.map */
