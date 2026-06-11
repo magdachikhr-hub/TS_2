@@ -17,20 +17,26 @@
           </div>
           <form>
             <div class="mortgage_container">
-              <span class="currency">£</span>
               <label for="mortgage_amount">Mortgage Amount</label>
-              <input type="number" id="mortgage_amount" />
+              <div class="input_wrapper">
+                <span class="currency">£</span>
+                <input type="number" id="mortgage_amount" />
+              </div>
             </div>
             <div class="wrapper">
               <div class="term_container">
                 <label for="term">Mortgage Term</label>
-                <input type="number" id="term" />
-                <span class="duration">years</span>
+                <div class="input_wrapper">
+                  <input type="number" id="term" />
+                  <span class="duration">years</span>
+                </div>
               </div>
               <div class="rate_container">
                 <label for="rate">Mortgage Rate</label>
-                <input type="number" id="rate" />
-                <span class="percent">%</span>
+                <div class="input_wrapper">
+                  <input type="number" id="rate" />
+                  <span class="percent">%</span>
+                </div>
               </div>
             </div>
             <div class="morgage_type">

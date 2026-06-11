@@ -17,6 +17,17 @@ $font: "Plus Jakarta Sans", sans-serif;
   font-family: $font;
 }
 
+@mixin spanBox {
+  background-color: $background;
+  padding: 12.5px 16px;
+  border-radius: 0 4px 4px 0;
+  border: 1px solid $spanBox;
+  border-left: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: $thinTextColor;
+}
+
 main {
   background-color: $background;
   height: 100vh;
@@ -27,9 +38,43 @@ main {
     div.calculator {
       background-color: $white;
       padding: 32px 24px;
+      div.heading {
+        margin-bottom: 24px;
+
+        @media screen and (min-width: 500px) {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 40px;
+        }
+        h1 {
+          font-size: 24px;
+          color: $darkBlue;
+        }
+        button.clear {
+          color: $thinTextColor;
+          border: none;
+          background-color: $white;
+          text-decoration: underline;
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        span {
+          @include spanBox;
+        }
+        span.currency {
+          border-radius: 4px 0 0 4px;
+          border-right: none;
+          border-left: 1px solid $spanBox;
+        }
+      }
     }
     div.output {
       background-color: $darkBlue;
+      padding: 32px 24px;
     }
   }
 }

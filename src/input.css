@@ -18,6 +18,47 @@ main div.container div.calculator {
   background-color: #ffffff;
   padding: 32px 24px;
 }
+main div.container div.calculator div.heading {
+  margin-bottom: 24px;
+}
+@media screen and (min-width: 500px) {
+  main div.container div.calculator div.heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+}
+main div.container div.calculator div.heading h1 {
+  font-size: 24px;
+  color: #133041;
+}
+main div.container div.calculator div.heading button.clear {
+  color: #4e6e7e;
+  border: none;
+  background-color: #ffffff;
+  text-decoration: underline;
+}
+main div.container div.calculator form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+main div.container div.calculator form span {
+  background-color: #e4f3fd;
+  padding: 12.5px 16px;
+  border-radius: 0 4px 4px 0;
+  border: 1px solid #6b94a8;
+  border-left: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #4e6e7e;
+}
+main div.container div.calculator form span.currency {
+  border-radius: 4px 0 0 4px;
+  border-right: none;
+  border-left: 1px solid #6b94a8;
+}
 main div.container div.output {
   background-color: #133041;
+  padding: 32px 24px;
 }/*# sourceMappingURL=input.css.map */
