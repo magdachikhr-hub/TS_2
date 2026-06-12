@@ -8,15 +8,48 @@
 
 main {
   background-color: #e4f3fd;
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  main {
+    padding: 40px 0;
+  }
 }
 main div.container {
   display: flex;
   flex-direction: column;
+  max-width: 688px;
+}
+@media screen and (min-width: 768px) {
+  main div.container {
+    border-radius: 24px;
+    overflow: hidden;
+  }
+}
+@media screen and (min-width: 1100px) {
+  main div.container {
+    flex-direction: row;
+    width: 1008px;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    background-color: #ffffff;
+  }
 }
 main div.container div.calculator {
   background-color: #ffffff;
   padding: 32px 24px;
+}
+@media screen and (min-width: 768px) {
+  main div.container div.calculator {
+    padding: 40px;
+  }
+}
+@media screen and (min-width: 1100px) {
+  main div.container div.calculator {
+    width: 50%;
+  }
 }
 main div.container div.calculator div.heading {
   margin-bottom: 24px;
@@ -72,6 +105,15 @@ main div.container div.calculator form .wrapper {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+@media screen and (min-width: 768px) {
+  main div.container div.calculator form .wrapper {
+    flex-direction: row;
+  }
+}
+main div.container div.calculator form .rate_container,
+main div.container div.calculator form .term_container {
+  width: 100%;
 }
 main div.container div.calculator form .input_wrapper {
   display: flex;
@@ -141,7 +183,27 @@ main div.container div.calculator form .morgage_type input[name=type]::before {
 main div.container div.calculator form .morgage_type input[name=type]:checked::before {
   display: inline-block;
 }
+main div.container div.calculator form button.calc {
+  width: 327px;
+  height: 56px;
+  background-color: #d8db2f;
+  border-radius: 999px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15.75px;
+  color: #133041;
+  font-weight: bold;
+  font-size: 18px;
+}
 main div.container div.output {
   background-color: #133041;
   padding: 32px 24px;
+}
+@media screen and (min-width: 1100px) {
+  main div.container div.output {
+    width: 50%;
+    border-bottom-left-radius: 80px;
+  }
 }/*# sourceMappingURL=input.css.map */

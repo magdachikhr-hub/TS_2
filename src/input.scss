@@ -33,14 +33,36 @@ $font: "Plus Jakarta Sans", sans-serif;
 
 main {
   background-color: $background;
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    padding: 40px 0;
+  }
   div.container {
     display: flex;
     flex-direction: column;
-
+    max-width: 688px;
+    @media screen and (min-width: 768px) {
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    @media screen and (min-width: 1100px) {
+      flex-direction: row;
+      width: 1008px;
+      max-width: fit-content;
+      background-color: $white;
+    }
     div.calculator {
       background-color: $white;
       padding: 32px 24px;
+      @media screen and (min-width: 768px) {
+        padding: 40px;
+      }
+      @media screen and (min-width: 1100px) {
+        width: 50%;
+      }
       div.heading {
         margin-bottom: 24px;
 
@@ -101,8 +123,14 @@ main {
           display: flex;
           flex-direction: column;
           gap: 24px;
+          @media screen and (min-width: 768px) {
+            flex-direction: row;
+          }
         }
-
+        .rate_container,
+        .term_container {
+          width: 100%;
+        }
         .input_wrapper {
           display: flex;
 
@@ -185,11 +213,30 @@ main {
             display: inline-block;
           }
         }
+
+        button.calc {
+          width: 327px;
+          height: 56px;
+          background-color: $green;
+          border-radius: 999px;
+          border: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 15.75px;
+          color: $darkBlue;
+          font-weight: bold;
+          font-size: 18px;
+        }
       }
     }
     div.output {
       background-color: $darkBlue;
       padding: 32px 24px;
+      @media screen and (min-width: 1100px) {
+        width: 50%;
+        border-bottom-left-radius: 80px;
+      }
     }
   }
 }
