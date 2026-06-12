@@ -12,6 +12,13 @@ main {
   align-items: center;
   justify-content: center;
 }
+@media screen and (min-width: 1100px) {
+  main {
+    height: 100vh;
+    padding: 0;
+    align-items: center;
+  }
+}
 @media screen and (min-width: 768px) {
   main {
     padding: 40px 0;
@@ -201,9 +208,96 @@ main div.container div.output {
   background-color: #133041;
   padding: 32px 24px;
 }
+main div.container div.output .primary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main div.container div.output .primary div.child {
+  text-align: center;
+  display: none;
+}
+main div.container div.output .primary div.child h2 {
+  color: #ffffff;
+  margin: 16px 0;
+}
+main div.container div.output .primary div.child p.complete {
+  color: #9abed5;
+}
+main div.container div.output .results div.text {
+  margin-bottom: 24px;
+}
+@media screen and (min-width: 1100px) {
+  main div.container div.output .results div.text {
+    margin-bottom: 40px;
+  }
+}
+main div.container div.output .results div.text h2 {
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+main div.container div.output .results div.text p.result_text {
+  color: #9abed5;
+  line-height: 150%;
+}
+main div.container div.output .results div.result_output {
+  background-color: #0e2431;
+  border-radius: 8px;
+  border-top: 4px solid #d8db2f;
+  padding: 24px 16px;
+}
+@media screen and (min-width: 768px) {
+  main div.container div.output .results div.result_output {
+    padding: 40px;
+  }
+}
+@media screen and (min-width: 1100px) {
+  main div.container div.output .results div.result_output {
+    padding: 32px;
+  }
+}
+main div.container div.output .results div.result_output h3 {
+  color: #9abed5;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+main div.container div.output .results div.result_output .monthly_repayment {
+  border-bottom: 1px solid rgba(154, 190, 213, 0.2509803922);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+@media screen and (min-width: 768px) {
+  main div.container div.output .results div.result_output .monthly_repayment {
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+  }
+}
+main div.container div.output .results div.result_output span#monthly_sum {
+  color: #d8db2f;
+  font-size: 40px;
+  font-weight: bold;
+}
+@media screen and (min-width: 768px) {
+  main div.container div.output .results div.result_output span#monthly_sum {
+    font-size: 56px;
+  }
+}
+main div.container div.output .results span.total_sum {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+}
 @media screen and (min-width: 1100px) {
   main div.container div.output {
     width: 50%;
     border-bottom-left-radius: 80px;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  main div.container div.output {
+    padding: 40px;
   }
 }/*# sourceMappingURL=input.css.map */
