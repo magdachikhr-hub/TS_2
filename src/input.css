@@ -95,6 +95,26 @@ main div.container div.calculator form #morgage_type_text {
   margin-bottom: 12px;
   display: inline-block;
 }
+main div.container div.calculator form .morgage_type .types {
+  display: flex;
+}
+main div.container div.calculator form .morgage_type label {
+  width: 100%;
+  display: flex;
+  padding: 12.5px 16px;
+  border: 1px solid #6b94a8;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #133041;
+}
+main div.container div.calculator form .morgage_type #interest_label {
+  margin-top: 12px;
+}
+main div.container div.calculator form .morgage_type input[name=type] {
+  margin-right: 16px;
+  width: 19.5px;
+  height: 19.5px;
+}
 main div.container div.output {
   background-color: #133041;
   padding: 32px 24px;

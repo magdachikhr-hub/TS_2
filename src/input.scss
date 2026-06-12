@@ -135,6 +135,30 @@ main {
           margin-bottom: 12px;
           display: inline-block;
         }
+
+        //radio inputs
+        .morgage_type {
+          .types {
+            display: flex;
+          }
+          label {
+            width: 100%;
+            display: flex;
+            padding: 12.5px 16px;
+            border: 1px solid $spanBox;
+            border-radius: 4px;
+            font-weight: bold;
+            color: $darkBlue;
+          }
+          #interest_label {
+            margin-top: 12px;
+          }
+          input[name="type"] {
+            margin-right: 16px;
+            width: 19.5px;
+            height: 19.5px;
+          }
+        }
       }
     }
     div.output {
