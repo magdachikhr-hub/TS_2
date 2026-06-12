@@ -107,6 +107,9 @@ main div.container div.calculator form .morgage_type label {
   font-weight: bold;
   color: #133041;
 }
+main div.container div.calculator form .morgage_type label:hover {
+  border: 1px solid #d8db2f;
+}
 main div.container div.calculator form .morgage_type #interest_label {
   margin-top: 12px;
 }
@@ -114,6 +117,29 @@ main div.container div.calculator form .morgage_type input[name=type] {
   margin-right: 16px;
   width: 19.5px;
   height: 19.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main div.container div.calculator form .morgage_type input[name=type]:checked {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 19.5px;
+  height: 19.5px;
+  border: 1px solid #d8db2f;
+  border-radius: 50%;
+}
+main div.container div.calculator form .morgage_type input[name=type]::before {
+  content: "";
+  height: 10px;
+  width: 10px;
+  background-color: #d8db2f;
+  border-radius: 50%;
+  display: none;
+}
+main div.container div.calculator form .morgage_type input[name=type]:checked::before {
+  display: inline-block;
 }
 main div.container div.output {
   background-color: #133041;

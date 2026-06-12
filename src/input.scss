@@ -149,6 +149,10 @@ main {
             border-radius: 4px;
             font-weight: bold;
             color: $darkBlue;
+
+            &:hover {
+              border: 1px solid $green;
+            }
           }
           #interest_label {
             margin-top: 12px;
@@ -157,6 +161,28 @@ main {
             margin-right: 16px;
             width: 19.5px;
             height: 19.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          input[name="type"]:checked {
+            appearance: none;
+            width: 19.5px;
+            height: 19.5px;
+            border: 1px solid $green;
+            border-radius: 50%;
+          }
+          input[name="type"]::before {
+            content: "";
+            height: 10px;
+            width: 10px;
+            background-color: $green;
+            border-radius: 50%;
+            display: none;
+          }
+
+          input[name="type"]:checked::before {
+            display: inline-block;
           }
         }
       }
