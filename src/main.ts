@@ -21,9 +21,12 @@ interface mortgageInputs {
   mortgageType: "repayment" | "interest";
 }
 
-form.addEventListener("submit", (e: Event): mortgageInputs | null => {
-  e.preventDefault();
+const pounds = new Intl.NumberFormat("en-GB", {
+  style: "currency",
+  currency: "GBP",
+});
 
+function getFormData(): mortgageInputs | null {
   const mortgage = parseFloat(mortgageInput.value);
   const term = parseInt(termInput.value);
   const rate = parseFloat(rateInput.value);
@@ -45,4 +48,36 @@ form.addEventListener("submit", (e: Event): mortgageInputs | null => {
   };
 
   return formData;
-});
+}
+
+let monthlyPayment: number = 0;
+let totalPayment: number = 0;
+
+function calculateMortgage(e: Event) {
+  e.preventDefault();
+  const data = getFormData();
+  console.log(data);
+
+  if (!data) {
+    return;
+  }
+  const { mortgageAmount, mortgageTerm, mortgageRate, mortgageType } = data;
+
+  const monthlyRate = mortgageRate / 100 / 12;
+  const totalNumPayment = mortgageTerm * 12;
+
+  if (mortgageType === "repayment") {
+    monthlyPayment =
+      mortgageAmount *
+      ((monthlyRate * (1 + monthlyRate) ** totalNumPayment) /
+        ((1 + monthlyRate) ** totalNumPayment - 1));
+    // console.log(monthlyPayment);
+    totalPayment = monthlyPayment * totalNumPayment;
+  }
+
+  pounds.format(monthlyPayment);
+  console.log(pounds.format(monthlyPayment));
+  console.log(pounds.format(totalPayment));
+}
+
+form.addEventListener("submit", calculateMortgage);
