@@ -21,10 +21,28 @@ interface mortgageInputs {
   mortgageType: "repayment" | "interest";
 }
 
-form.addEventListener("submit", (e: Event) => {
+form.addEventListener("submit", (e: Event): mortgageInputs | null => {
   e.preventDefault();
 
-  const mortgage: number = parseFloat(mortgageInput.value);
-  const term: number = parseInt(termInput.value);
-  const rate: number = parseFloat(rateInput.value);
+  const mortgage = parseFloat(mortgageInput.value);
+  const term = parseInt(termInput.value);
+  const rate = parseFloat(rateInput.value);
+
+  const type = (
+    document.querySelector('[name ="type"]:checked') as HTMLInputElement
+  ).id;
+  console.log(type);
+
+  if (isNaN(mortgage) || isNaN(term) || isNaN(rate)) {
+    return null;
+  }
+
+  const formData = {
+    mortgageAmount: mortgage,
+    mortgageTerm: term,
+    mortgageRate: rate,
+    mortgageType: type as "repayment" | "interest",
+  };
+
+  return formData;
 });
