@@ -203,6 +203,10 @@ main div.container div.calculator form button.calc {
   color: #133041;
   font-weight: bold;
   font-size: 18px;
+  cursor: pointer;
+}
+main div.container div.calculator form button.calc:hover {
+  background-color: rgba(215, 218, 47, 0.5019607843);
 }
 main div.container div.output {
   background-color: #133041;
@@ -216,7 +220,7 @@ main div.container div.output .primary {
 }
 main div.container div.output .primary div.child {
   text-align: center;
-  display: none;
+  display: block;
 }
 main div.container div.output .primary div.child h2 {
   color: #ffffff;
@@ -224,6 +228,9 @@ main div.container div.output .primary div.child h2 {
 }
 main div.container div.output .primary div.child p.complete {
   color: #9abed5;
+}
+main div.container div.output .results {
+  display: none;
 }
 main div.container div.output .results div.text {
   margin-bottom: 24px;

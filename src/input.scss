@@ -11,6 +11,7 @@ $resultsBg: #0e2431;
 $font: "Plus Jakarta Sans", sans-serif;
 $paragraphColor: #9abed5;
 $opacityPColor: #9abed540;
+$opacityGreen: #d7da2f80;
 
 * {
   margin: 0;
@@ -235,6 +236,10 @@ main {
           color: $darkBlue;
           font-weight: bold;
           font-size: 18px;
+          cursor: pointer;
+          &:hover {
+            background-color: $opacityGreen;
+          }
         }
       }
     }
@@ -249,7 +254,7 @@ main {
         align-items: center;
         div.child {
           text-align: center;
-          display: none;
+          display: block;
           h2 {
             color: $white;
             margin: 16px 0;
@@ -261,7 +266,7 @@ main {
       }
 
       .results {
-        // display: none;
+        display: none;
         div.text {
           margin-bottom: 24px;
           @media screen and (min-width: 1100px) {
