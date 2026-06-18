@@ -88,7 +88,8 @@ main div.container div.calculator form {
   flex-direction: column;
   gap: 24px;
 }
-main div.container div.calculator form .wrapper span,
+main div.container div.calculator form .wrapper span.duration,
+main div.container div.calculator form span.percent,
 main div.container div.calculator form .currency {
   background-color: #e4f3fd;
   padding: 12px 16px;
@@ -96,7 +97,8 @@ main div.container div.calculator form .currency {
   font-weight: bold;
   color: #4e6e7e;
 }
-main div.container div.calculator form .wrapper span:hover,
+main div.container div.calculator form .wrapper span.duration:hover,
+main div.container div.calculator form span.percent:hover,
 main div.container div.calculator form .currency:hover {
   border: 1px solid #133041;
 }
@@ -313,4 +315,12 @@ label:has(input[name=type]:checked) {
 
 .hidden {
   display: none !important;
+}
+
+.error_msg {
+  color: #d73328;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 12px;
+  display: inline-block;
 }/*# sourceMappingURL=input.css.map */

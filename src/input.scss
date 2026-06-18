@@ -12,6 +12,7 @@ $font: "Plus Jakarta Sans", sans-serif;
 $paragraphColor: #9abed5;
 $opacityPColor: #9abed540;
 $opacityGreen: #d7da2f80;
+$errorColor: #d73328;
 
 * {
   margin: 0;
@@ -102,7 +103,8 @@ main {
         display: flex;
         flex-direction: column;
         gap: 24px;
-        .wrapper span,
+        .wrapper span.duration,
+        span.percent,
         .currency {
           @include spanBox;
         }
@@ -347,4 +349,12 @@ label:has(input[name="type"]:checked) {
 
 .hidden {
   display: none !important;
+}
+
+.error_msg {
+  color: $errorColor;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 12px;
+  display: inline-block;
 }
