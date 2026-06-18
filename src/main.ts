@@ -12,7 +12,7 @@ const mortgageInput = document.getElementById(
 const monthlySum = document.getElementById("monthly_sum") as HTMLSpanElement;
 const totalSum = document.getElementById("total_sum") as HTMLSpanElement;
 const primaryChild = document.querySelector(".child") as HTMLDivElement;
-const resultHtml = document.querySelector(".result") as HTMLDivElement;
+const resultHtml = document.querySelector(".results") as HTMLDivElement;
 
 interface mortgageInputs {
   mortgageAmount: number;
@@ -80,6 +80,9 @@ function calculateMortgage(e: Event) {
   pounds.format(monthlyPayment);
   console.log(pounds.format(monthlyPayment));
   console.log(pounds.format(totalPayment));
+
+  primaryChild.classList.add("hidden");
+  resultHtml.classList.remove("hidden");
 }
 
 form.addEventListener("submit", calculateMortgage);

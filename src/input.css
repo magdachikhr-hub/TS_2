@@ -229,9 +229,6 @@ main div.container div.output .primary div.child h2 {
 main div.container div.output .primary div.child p.complete {
   color: #9abed5;
 }
-main div.container div.output .results {
-  display: none;
-}
 main div.container div.output .results div.text {
   margin-bottom: 24px;
 }
@@ -312,4 +309,8 @@ main div.container div.output .results span.total_sum {
 label:has(input[name=type]:checked) {
   background-color: #f9fae0;
   border-color: #d8db2f !important;
+}
+
+.hidden {
+  display: none !important;
 }/*# sourceMappingURL=input.css.map */

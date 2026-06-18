@@ -266,7 +266,7 @@ main {
       }
 
       .results {
-        display: none;
+        // display: none;
         div.text {
           margin-bottom: 24px;
           @media screen and (min-width: 1100px) {
@@ -343,4 +343,8 @@ main {
 label:has(input[name="type"]:checked) {
   background-color: $lightYellow;
   border-color: $green !important;
+}
+
+.hidden {
+  display: none !important;
 }
