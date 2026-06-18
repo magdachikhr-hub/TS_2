@@ -85,4 +85,12 @@ function calculateMortgage(e: Event) {
   resultHtml.classList.remove("hidden");
 }
 
+function clear() {
+  form.reset();
+  primaryChild.classList.remove("hidden");
+  resultHtml.classList.add("hidden");
+}
+
 form.addEventListener("submit", calculateMortgage);
+
+clearBtn.addEventListener("click", clear);
