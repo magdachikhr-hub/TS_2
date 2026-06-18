@@ -2,11 +2,11 @@
 
 const form = document.querySelector("form") as HTMLFormElement;
 const clearBtn = document.querySelector(".clear") as HTMLButtonElement;
-const calculateBtn = document.querySelector(".calc") as HTMLButtonElement;
+// const calculateBtn = document.querySelector(".calc") as HTMLButtonElement;
 const termInput = document.getElementById("term") as HTMLInputElement;
 const rateInput = document.getElementById("rate") as HTMLInputElement;
 const mortgageInput = document.getElementById(
-  "mortgage_amount"
+  "mortgage_amount",
 ) as HTMLInputElement;
 
 const monthlySum = document.getElementById("monthly_sum") as HTMLSpanElement;
@@ -35,9 +35,24 @@ function getFormData(): mortgageInputs | null {
   const type = (
     document.querySelector('[name ="type"]:checked') as HTMLInputElement
   ).id;
-  console.log(type);
+  // console.log(type);
 
-  if (isNaN(mortgage) || isNaN(term) || isNaN(rate)) {
+  let hasError = false;
+
+  if (isNaN(mortgage)) {
+    hasError = true;
+    mortgageInput.parentElement?.classList.add("error");
+  }
+  if (isNaN(term)) {
+    hasError = true;
+    termInput.parentElement?.classList.add("error");
+  }
+  if (isNaN(rate)) {
+    hasError = true;
+    rateInput.parentElement?.classList.add("error");
+  }
+
+  if (hasError === true) {
     return null;
   }
 
@@ -56,6 +71,7 @@ let totalPayment: number = 0;
 
 function calculateMortgage(e: Event) {
   e.preventDefault();
+
   const data = getFormData();
   console.log(data);
 
@@ -77,10 +93,6 @@ function calculateMortgage(e: Event) {
     monthlyPayment = (mortgageAmount * (mortgageRate / 100)) / 12;
   }
   totalPayment = monthlyPayment * totalNumPayment;
-
-  // pounds.format(monthlyPayment);
-  // console.log(pounds.format(monthlyPayment));
-  // console.log(pounds.format(totalPayment));
 
   primaryChild.classList.add("hidden");
   resultHtml.classList.remove("hidden");

@@ -24,25 +24,18 @@ $errorColor: #d73328;
 @mixin spanBox {
   background-color: $background;
   padding: 12px 16px;
-  // border-radius: 0 4px 4px 0;
-  // border: 1px solid $spanBox;
-  // border-left: none;
   font-size: 18px;
   font-weight: bold;
   color: $thinTextColor;
-  &:hover {
-    border: 1px solid $darkBlue;
-  }
 }
 
 main {
   background-color: $background;
   display: flex;
-  align-items: center;
   justify-content: center;
 
   @media screen and (min-width: 1100px) {
-    height: 100vh;
+    min-height: 100vh;
     padding: 0;
     align-items: center;
   }
@@ -54,6 +47,7 @@ main {
     display: flex;
     flex-direction: column;
     max-width: 688px;
+
     @media screen and (min-width: 768px) {
       border-radius: 24px;
       overflow: hidden;
@@ -67,6 +61,7 @@ main {
     div.calculator {
       background-color: $white;
       padding: 32px 24px;
+
       @media screen and (min-width: 768px) {
         padding: 40px;
       }
@@ -102,7 +97,7 @@ main {
       form {
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        // gap: 24px;
         .wrapper span.duration,
         span.percent,
         .currency {
@@ -110,7 +105,7 @@ main {
         }
 
         .input_wrapper {
-          display: flex;
+          // display: flex;
           border: 1px solid $spanBox;
           border-radius: 2.5px;
           &:hover {
@@ -118,22 +113,11 @@ main {
           }
         }
 
-        // span.currency {
-        //   border-radius: 4px 0 0 4px;
-        //   border-right: none;
-        //   border-left: 1px solid $spanBox;
-        // }
-
-        // #mortgage_amount {
-        //   border-left: none;
-        //   border-radius: 0 4px 4px 0;
-        //   border-right: 1px solid $spanBox;
-        // }
-
         .wrapper {
           display: flex;
           flex-direction: column;
           gap: 24px;
+
           @media screen and (min-width: 768px) {
             flex-direction: row;
           }
@@ -157,13 +141,6 @@ main {
               border: 1px solid $green;
               outline: none;
             }
-            // &:focus div.input_wrapper:has(input) {
-            //   border: none;
-            // }
-
-            //   &:hover {
-            //     border: 1px solid $darkBlue;
-            //   }
           }
         }
 
@@ -238,7 +215,9 @@ main {
           color: $darkBlue;
           font-weight: bold;
           font-size: 18px;
+          margin-top: 24px;
           cursor: pointer;
+
           &:hover {
             background-color: $opacityGreen;
           }
@@ -262,15 +241,15 @@ main {
             margin: 16px 0;
           }
           p.complete {
-            color: #9abed5;
+            color: $paragraphColor;
           }
         }
       }
 
       .results {
-        // display: none;
         div.text {
           margin-bottom: 24px;
+
           @media screen and (min-width: 1100px) {
             margin-bottom: 40px;
           }
@@ -289,6 +268,7 @@ main {
           border-radius: 8px;
           border-top: 4px solid $green;
           padding: 24px 16px;
+
           @media screen and (min-width: 768px) {
             padding: 40px;
           }
@@ -306,6 +286,7 @@ main {
             border-bottom: 1px solid $opacityPColor;
             padding-bottom: 16px;
             margin-bottom: 16px;
+
             @media screen and (min-width: 768px) {
               padding-bottom: 32px;
               margin-bottom: 32px;
@@ -316,6 +297,7 @@ main {
             color: $green;
             font-size: 40px;
             font-weight: bold;
+
             @media screen and (min-width: 768px) {
               font-size: 56px;
             }
@@ -333,7 +315,6 @@ main {
         border-bottom-left-radius: 80px;
         display: flex;
         justify-content: center;
-        // align-items: center;
       }
       @media screen and (min-width: 768px) {
         padding: 40px;
@@ -355,6 +336,22 @@ label:has(input[name="type"]:checked) {
   color: $errorColor;
   font-size: 14px;
   font-weight: 500;
-  margin-top: 12px;
+  margin-top: 8px;
+  // height: ;
+  visibility: hidden;
   display: inline-block;
+  margin-bottom: 10px;
+}
+
+.error span {
+  background-color: $errorColor !important;
+  color: $white !important;
+}
+
+.error input[type="text"] {
+  border: 1px solid $errorColor !important;
+}
+
+.error ~ span.error_msg {
+  visibility: visible;
 }

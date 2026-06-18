@@ -9,12 +9,11 @@
 main {
   background-color: #e4f3fd;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 @media screen and (min-width: 1100px) {
   main {
-    height: 100vh;
+    min-height: 100vh;
     padding: 0;
     align-items: center;
   }
@@ -86,7 +85,6 @@ main div.container div.calculator div.heading button.clear:hover {
 main div.container div.calculator form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 main div.container div.calculator form .wrapper span.duration,
 main div.container div.calculator form span.percent,
@@ -97,13 +95,7 @@ main div.container div.calculator form .currency {
   font-weight: bold;
   color: #4e6e7e;
 }
-main div.container div.calculator form .wrapper span.duration:hover,
-main div.container div.calculator form span.percent:hover,
-main div.container div.calculator form .currency:hover {
-  border: 1px solid #133041;
-}
 main div.container div.calculator form .input_wrapper {
-  display: flex;
   border: 1px solid #6b94a8;
   border-radius: 2.5px;
 }
@@ -205,6 +197,7 @@ main div.container div.calculator form button.calc {
   color: #133041;
   font-weight: bold;
   font-size: 18px;
+  margin-top: 24px;
   cursor: pointer;
 }
 main div.container div.calculator form button.calc:hover {
@@ -321,6 +314,21 @@ label:has(input[name=type]:checked) {
   color: #d73328;
   font-size: 14px;
   font-weight: 500;
-  margin-top: 12px;
+  margin-top: 8px;
+  visibility: hidden;
   display: inline-block;
+  margin-bottom: 10px;
+}
+
+.error span {
+  background-color: #d73328 !important;
+  color: #ffffff !important;
+}
+
+.error input[type=text] {
+  border: 1px solid #d73328 !important;
+}
+
+.error ~ span.error_msg {
+  visibility: visible;
 }/*# sourceMappingURL=input.css.map */
