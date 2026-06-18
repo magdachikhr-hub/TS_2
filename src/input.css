@@ -307,4 +307,9 @@ main div.container div.output .results span.total_sum {
   main div.container div.output {
     padding: 40px;
   }
+}
+
+label:has(input[name=type]:checked) {
+  background-color: #f9fae0;
+  border-color: #d8db2f !important;
 }/*# sourceMappingURL=input.css.map */

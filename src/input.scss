@@ -339,3 +339,8 @@ main {
     }
   }
 }
+
+label:has(input[name="type"]:checked) {
+  background-color: $lightYellow;
+  border-color: $green !important;
+}

@@ -6,7 +6,7 @@ const calculateBtn = document.querySelector(".calc") as HTMLButtonElement;
 const termInput = document.getElementById("term") as HTMLInputElement;
 const rateInput = document.getElementById("rate") as HTMLInputElement;
 const mortgageInput = document.getElementById(
-  "mortgage_amount",
+  "mortgage_amount"
 ) as HTMLInputElement;
 
 const monthlySum = document.getElementById("monthly_sum") as HTMLSpanElement;
