@@ -311,6 +311,15 @@ label:has(input[name=type]:checked) {
   display: none !important;
 }
 
+.active {
+  border: 1px solid #d8db2f !important;
+}
+
+.active span {
+  background-color: #d8db2f !important;
+  color: #133041 !important;
+}
+
 .error_msg {
   color: #d73328;
   font-size: 14px;

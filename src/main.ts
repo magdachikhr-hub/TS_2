@@ -15,6 +15,10 @@ const primaryChild = document.querySelector(".child") as HTMLDivElement;
 const resultHtml = document.querySelector(".results") as HTMLDivElement;
 console.log(totalSum);
 
+const inputs = document.querySelectorAll(
+  ".main_inputs",
+) as NodeListOf<HTMLInputElement>;
+
 interface mortgageInputs {
   mortgageAmount: number;
   mortgageTerm: number;
@@ -110,15 +114,56 @@ function clear() {
   primaryChild.classList.remove("hidden");
   resultHtml.classList.add("hidden");
 
-  reset(termInput);
-  reset(mortgageInput);
-  reset(rateInput);
+  // reset(termInput);
+  // reset(mortgageInput);
+  // reset(rateInput);
+
+  //another way
+  // [termInput, mortgageInput, rateInput].forEach((input) => {
+  //   input.parentElement?.classList.remove("error");
+  // });
+
+  //another way 3
+  inputs.forEach((i) => {
+    i.parentElement?.classList.remove("error");
+  });
 }
+
+inputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    setTimeout(() => {
+      input.parentElement?.classList.remove("error");
+    }, 300);
+  });
+});
+
+// let focusedInput;
+
+inputs.forEach((input) => {
+  input.addEventListener("focus", () => {
+    // focusedInput = input;
+    input.parentElement?.classList.add("active");
+  });
+});
+
+document.addEventListener("click", (e: Event) => {
+  const clickedEle: any = e.target;
+  console.log(clickedEle);
+
+  if (clickedEle?.classList.contains("main_inputs")) {
+    console.log("clicked");
+    return;
+  } else {
+    inputs.forEach((input) => {
+      input.parentElement?.classList.remove("active");
+    });
+  }
+});
 
 form.addEventListener("submit", calculateMortgage);
 
 clearBtn.addEventListener("click", clear);
 
-function reset(input: HTMLInputElement) {
-  input.parentElement?.classList.remove("error");
-}
+// function reset(input: HTMLInputElement): void {
+//   input.parentElement?.classList.remove("error");
+// }

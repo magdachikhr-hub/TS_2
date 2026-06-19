@@ -333,6 +333,15 @@ label:has(input[name="type"]:checked) {
   display: none !important;
 }
 
+.active {
+  border: 1px solid $green !important;
+}
+
+.active span {
+  background-color: $green !important;
+  color: $darkBlue !important;
+}
+
 .error_msg {
   color: $errorColor;
   font-size: 14px;
