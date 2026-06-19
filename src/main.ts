@@ -37,6 +37,10 @@ function getFormData(): mortgageInputs | null {
   ).id;
   // console.log(type);
 
+  mortgageInput.parentElement?.classList.remove("error");
+  termInput.parentElement?.classList.remove("error");
+  rateInput.parentElement?.classList.remove("error");
+
   let hasError = false;
 
   if (isNaN(mortgage)) {

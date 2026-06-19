@@ -98,9 +98,10 @@ main div.container div.calculator form .currency {
 main div.container div.calculator form .input_wrapper {
   border: 1px solid #6b94a8;
   border-radius: 2.5px;
+  transition: all 400ms;
 }
 main div.container div.calculator form .input_wrapper:hover {
-  border: 1px solid #133041;
+  border: 1px solid #d8db2f;
 }
 main div.container div.calculator form .wrapper {
   display: flex;

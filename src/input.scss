@@ -108,8 +108,9 @@ main {
           // display: flex;
           border: 1px solid $spanBox;
           border-radius: 2.5px;
+          transition: all 400ms;
           &:hover {
-            border: 1px solid $darkBlue;
+            border: 1px solid $green;
           }
         }
 
