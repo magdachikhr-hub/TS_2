@@ -137,12 +137,15 @@ inputs.forEach((input) => {
   });
 });
 
-// let focusedInput;
-
 inputs.forEach((input) => {
   input.addEventListener("focus", () => {
-    // focusedInput = input;
     input.parentElement?.classList.add("active");
+  });
+});
+
+inputs.forEach((input) => {
+  input.addEventListener("blur", (e) => {
+    input.parentElement?.classList.remove("active");
   });
 });
 
