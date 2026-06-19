@@ -144,7 +144,7 @@ inputs.forEach((input) => {
 });
 
 inputs.forEach((input) => {
-  input.addEventListener("blur", (e) => {
+  input.addEventListener("blur", () => {
     input.parentElement?.classList.remove("active");
   });
 });
