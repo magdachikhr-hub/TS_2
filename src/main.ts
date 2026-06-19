@@ -109,8 +109,16 @@ function clear() {
   form.reset();
   primaryChild.classList.remove("hidden");
   resultHtml.classList.add("hidden");
+
+  reset(termInput);
+  reset(mortgageInput);
+  reset(rateInput);
 }
 
 form.addEventListener("submit", calculateMortgage);
 
 clearBtn.addEventListener("click", clear);
+
+function reset(input: HTMLInputElement) {
+  input.parentElement?.classList.remove("error");
+}
