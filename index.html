@@ -19,7 +19,12 @@
             <div class="mortgage_container">
               <label for="mortgage_amount">Mortgage Amount</label>
               <div class="input_wrapper">
-                <span class="currency">£</span>
+                <span class="currency toggle">⏷</span>
+                <div class="currency_wrapper">
+                  <span class="currency cur" id="GBP">£</span>
+                  <span class="currency cur" id="USD">$</span>
+                  <span class="currency cur" id="GEL">₾</span>
+                </div>
                 <input type="text" id="mortgage_amount" class="main_inputs" />
               </div>
               <span class="error_msg">This field is required</span>

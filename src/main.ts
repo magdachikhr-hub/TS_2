@@ -14,10 +14,22 @@ const totalSum = document.querySelector(".total_sum") as HTMLSpanElement;
 const primaryChild = document.querySelector(".child") as HTMLDivElement;
 const resultHtml = document.querySelector(".results") as HTMLDivElement;
 console.log(totalSum);
+const currencyWrapper = document.querySelector(
+  ".currency_wrapper",
+) as HTMLDivElement;
+const currencyButton = document.querySelector(".currency") as HTMLSpanElement;
+
+const currencyDisplay = document.querySelector(".toggle") as HTMLSpanElement;
 
 const inputs = document.querySelectorAll(
   ".main_inputs",
 ) as NodeListOf<HTMLInputElement>;
+
+let exchangeRates = {
+  GBP: 1,
+  USD: 1,
+  GEL: 1,
+};
 
 interface mortgageInputs {
   mortgageAmount: number;
@@ -26,10 +38,10 @@ interface mortgageInputs {
   mortgageType: "repayment" | "interest";
 }
 
-const pounds = new Intl.NumberFormat("en-GB", {
-  style: "currency",
-  currency: "GBP",
-});
+// const pounds = new Intl.NumberFormat("en-GB", {
+//   style: "currency",
+//   currency: "GBP",
+// });
 
 function getFormData(): mortgageInputs | null {
   const mortgage = parseFloat(mortgageInput.value);
@@ -77,6 +89,40 @@ function getFormData(): mortgageInputs | null {
 let monthlyPayment: number = 0;
 let totalPayment: number = 0;
 
+function updateResults() {
+  const formatter = new Intl.NumberFormat(format || "en-GB", {
+    style: "currency",
+    currency: format === "en-US" ? "USD" : format === "ka-GE" ? "GEL" : "GBP",
+  });
+
+  monthlySum.textContent = formatter.format(convertCurrency(monthlyPayment));
+
+  totalSum.textContent = formatter.format(convertCurrency(totalPayment));
+}
+
+function convertCurrency(amount: number) {
+  if (format === "en-US") {
+    return amount * exchangeRates.USD;
+  }
+
+  if (format === "ka-GE") {
+    return amount * exchangeRates.GEL;
+  }
+
+  return amount;
+}
+
+async function getExchangeRates() {
+  const response = await fetch("https://open.er-api.com/v6/latest/GBP");
+
+  const data = await response.json();
+
+  exchangeRates.USD = data.rates.USD;
+  exchangeRates.GEL = data.rates.GEL;
+}
+
+getExchangeRates();
+
 function calculateMortgage(e: Event) {
   e.preventDefault();
 
@@ -105,8 +151,7 @@ function calculateMortgage(e: Event) {
   primaryChild.classList.add("hidden");
   resultHtml.classList.remove("hidden");
 
-  monthlySum.textContent = pounds.format(monthlyPayment);
-  totalSum.textContent = pounds.format(totalPayment);
+  updateResults();
 }
 
 function clear() {
@@ -170,3 +215,34 @@ clearBtn.addEventListener("click", clear);
 // function reset(input: HTMLInputElement): void {
 //   input.parentElement?.classList.remove("error");
 // }
+
+let format: any;
+
+currencyWrapper.addEventListener("click", (e: Event) => {
+  const clicked = e.target as HTMLElement;
+  const value = clicked.id;
+
+  if (value === "USD") {
+    format = "en-US";
+    currencyDisplay.textContent = "$";
+  }
+
+  if (value === "GEL") {
+    format = "ka-GE";
+    currencyDisplay.textContent = "₾";
+  }
+
+  if (value === "GBP") {
+    format = "en-GB";
+    currencyDisplay.textContent = "£";
+  }
+
+  if (monthlyPayment > 0) {
+    updateResults();
+  }
+  currencyWrapper.classList.remove("show");
+});
+
+currencyButton.addEventListener("click", () => {
+  currencyWrapper.classList.toggle("show");
+});

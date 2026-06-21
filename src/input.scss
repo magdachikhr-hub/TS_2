@@ -109,6 +109,7 @@ main {
           border: 1px solid $spanBox;
           border-radius: 2.5px;
           transition: all 400ms;
+          position: relative;
           &:hover {
             border: 1px solid $green;
           }
@@ -364,4 +365,20 @@ label:has(input[name="type"]:checked) {
 
 .error ~ span.error_msg {
   visibility: visible;
+}
+
+.currency_wrapper {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  display: none;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.currency_wrapper.show {
+  display: flex;
+}
+.cur {
+  border: 0.5px solid $spanBox;
 }
