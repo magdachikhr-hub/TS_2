@@ -13,7 +13,6 @@ const monthlySum = document.getElementById("monthly_sum") as HTMLSpanElement;
 const totalSum = document.querySelector(".total_sum") as HTMLSpanElement;
 const primaryChild = document.querySelector(".child") as HTMLDivElement;
 const resultHtml = document.querySelector(".results") as HTMLDivElement;
-console.log(totalSum);
 const currencyWrapper = document.querySelector(
   ".currency_wrapper",
 ) as HTMLDivElement;
@@ -25,23 +24,12 @@ const inputs = document.querySelectorAll(
   ".main_inputs",
 ) as NodeListOf<HTMLInputElement>;
 
-let exchangeRates = {
-  GBP: 1,
-  USD: 1,
-  GEL: 1,
-};
-
 interface mortgageInputs {
   mortgageAmount: number;
   mortgageTerm: number;
   mortgageRate: number;
   mortgageType: "repayment" | "interest";
 }
-
-// const pounds = new Intl.NumberFormat("en-GB", {
-//   style: "currency",
-//   currency: "GBP",
-// });
 
 function getFormData(): mortgageInputs | null {
   const mortgage = parseFloat(mortgageInput.value);
@@ -51,7 +39,6 @@ function getFormData(): mortgageInputs | null {
   const type = (
     document.querySelector('[name ="type"]:checked') as HTMLInputElement
   ).id;
-  // console.log(type);
 
   mortgageInput.parentElement?.classList.remove("error");
   termInput.parentElement?.classList.remove("error");
@@ -89,45 +76,28 @@ function getFormData(): mortgageInputs | null {
 let monthlyPayment: number = 0;
 let totalPayment: number = 0;
 
+let format: "en-US" | "ka-GE" | "en-GB" = "en-GB";
+
+function getCurrency() {
+  if (format === "en-US") return "USD";
+  if (format === "ka-GE") return "GEL";
+  return "GBP";
+}
+
 function updateResults() {
-  const formatter = new Intl.NumberFormat(format || "en-GB", {
+  const formatter = new Intl.NumberFormat(format, {
     style: "currency",
-    currency: format === "en-US" ? "USD" : format === "ka-GE" ? "GEL" : "GBP",
+    currency: getCurrency(),
   });
 
-  monthlySum.textContent = formatter.format(convertCurrency(monthlyPayment));
-
-  totalSum.textContent = formatter.format(convertCurrency(totalPayment));
+  monthlySum.textContent = formatter.format(monthlyPayment);
+  totalSum.textContent = formatter.format(totalPayment);
 }
-
-function convertCurrency(amount: number) {
-  if (format === "en-US") {
-    return amount * exchangeRates.USD;
-  }
-
-  if (format === "ka-GE") {
-    return amount * exchangeRates.GEL;
-  }
-
-  return amount;
-}
-
-async function getExchangeRates() {
-  const response = await fetch("https://open.er-api.com/v6/latest/GBP");
-
-  const data = await response.json();
-
-  exchangeRates.USD = data.rates.USD;
-  exchangeRates.GEL = data.rates.GEL;
-}
-
-getExchangeRates();
 
 function calculateMortgage(e: Event) {
   e.preventDefault();
 
   const data = getFormData();
-  console.log(data);
 
   if (!data) {
     return;
@@ -142,7 +112,6 @@ function calculateMortgage(e: Event) {
       mortgageAmount *
       ((monthlyRate * (1 + monthlyRate) ** totalNumPayment) /
         ((1 + monthlyRate) ** totalNumPayment - 1));
-    // console.log(monthlyPayment);
   } else {
     monthlyPayment = (mortgageAmount * (mortgageRate / 100)) / 12;
   }
@@ -156,19 +125,13 @@ function calculateMortgage(e: Event) {
 
 function clear() {
   form.reset();
+
+  format = "en-GB";
+  currencyDisplay.textContent = "£";
+
   primaryChild.classList.remove("hidden");
   resultHtml.classList.add("hidden");
 
-  // reset(termInput);
-  // reset(mortgageInput);
-  // reset(rateInput);
-
-  //another way
-  // [termInput, mortgageInput, rateInput].forEach((input) => {
-  //   input.parentElement?.classList.remove("error");
-  // });
-
-  //another way 3
   inputs.forEach((i) => {
     i.parentElement?.classList.remove("error");
   });
@@ -196,10 +159,8 @@ inputs.forEach((input) => {
 
 document.addEventListener("click", (e: Event) => {
   const clickedEle: any = e.target;
-  console.log(clickedEle);
 
   if (clickedEle?.classList.contains("main_inputs")) {
-    console.log("clicked");
     return;
   } else {
     inputs.forEach((input) => {
@@ -211,12 +172,6 @@ document.addEventListener("click", (e: Event) => {
 form.addEventListener("submit", calculateMortgage);
 
 clearBtn.addEventListener("click", clear);
-
-// function reset(input: HTMLInputElement): void {
-//   input.parentElement?.classList.remove("error");
-// }
-
-let format: any;
 
 currencyWrapper.addEventListener("click", (e: Event) => {
   const clicked = e.target as HTMLElement;
