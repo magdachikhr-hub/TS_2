@@ -1,0 +1,19 @@
+@use "../styles/variables" as *;
+
+label:has(input[name="type"]:checked) {
+  background-color: $lightYellow;
+  border-color: $green !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.active {
+  border: 1px solid $green !important;
+}
+
+.active span {
+  background-color: $green !important;
+  color: $darkBlue !important;
+}

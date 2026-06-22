@@ -1,33 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@use "../styles/variables" as *;
 
-$green: #d8db2f;
-$background: #e4f3fd;
-$darkBlue: #133041;
-$white: #ffffff;
-$thinTextColor: #4e6e7e;
-$spanBox: #6b94a8;
-$lightYellow: #f9fae0;
-$resultsBg: #0e2431;
-$font: "Plus Jakarta Sans", sans-serif;
-$paragraphColor: #9abed5;
-$opacityPColor: #9abed540;
-$opacityGreen: #d7da2f80;
-$errorColor: #d73328;
+@use "../styles/error" as *;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: $font;
-}
+@use "../styles/active" as *;
 
-@mixin spanBox {
-  background-color: $background;
-  padding: 12px 16px;
-  font-size: 18px;
-  font-weight: bold;
-  color: $thinTextColor;
-}
+@use "../styles/form" as *;
 
 main {
   background-color: $background;
@@ -90,138 +67,6 @@ main {
 
           &:hover {
             color: $darkBlue;
-          }
-        }
-      }
-
-      form {
-        display: flex;
-        flex-direction: column;
-        // gap: 24px;
-        .wrapper span.duration,
-        span.percent,
-        .currency {
-          @include spanBox;
-        }
-
-        .input_wrapper {
-          // display: flex;
-          border: 1px solid $spanBox;
-          border-radius: 2.5px;
-          transition: all 400ms;
-          position: relative;
-          &:hover {
-            border: 1px solid $green;
-          }
-        }
-
-        .wrapper {
-          display: flex;
-          flex-direction: column;
-          gap: 24px;
-
-          @media screen and (min-width: 768px) {
-            flex-direction: row;
-          }
-        }
-        .rate_container,
-        .term_container {
-          width: 100%;
-        }
-        .input_wrapper {
-          display: flex;
-
-          input {
-            height: 48px;
-            border: none;
-            padding-left: 16px;
-            color: $darkBlue;
-            width: 100%;
-            font-weight: bold;
-
-            &:focus {
-              border: 1px solid $green;
-              outline: none;
-            }
-          }
-        }
-
-        .mortgage_container label,
-        .wrapper label,
-        #morgage_type_text {
-          color: $thinTextColor;
-          margin-bottom: 12px;
-          display: inline-block;
-        }
-
-        //radio inputs
-        .morgage_type {
-          .types {
-            display: flex;
-          }
-          label {
-            width: 100%;
-            display: flex;
-            padding: 12.5px 16px;
-            border: 1px solid $spanBox;
-            border-radius: 4px;
-            font-weight: bold;
-            color: $darkBlue;
-
-            &:hover {
-              border: 1px solid $green;
-            }
-          }
-          #interest_label {
-            margin-top: 12px;
-          }
-          input[name="type"] {
-            margin-right: 16px;
-            width: 19.5px;
-            height: 19.5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-          input[name="type"]:checked {
-            appearance: none;
-            width: 19.5px;
-            height: 19.5px;
-            border: 1px solid $green;
-            border-radius: 50%;
-          }
-          input[name="type"]::before {
-            content: "";
-            height: 10px;
-            width: 10px;
-            background-color: $green;
-            border-radius: 50%;
-            display: none;
-          }
-
-          input[name="type"]:checked::before {
-            display: inline-block;
-          }
-        }
-
-        button.calc {
-          width: 327px;
-          height: 56px;
-          background-color: $green;
-          border-radius: 999px;
-          border: none;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 15.75px;
-          color: $darkBlue;
-          font-weight: bold;
-          font-size: 18px;
-          margin-top: 24px;
-          cursor: pointer;
-
-          &:hover {
-            background-color: $opacityGreen;
           }
         }
       }
@@ -323,48 +168,6 @@ main {
       }
     }
   }
-}
-
-label:has(input[name="type"]:checked) {
-  background-color: $lightYellow;
-  border-color: $green !important;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.active {
-  border: 1px solid $green !important;
-}
-
-.active span {
-  background-color: $green !important;
-  color: $darkBlue !important;
-}
-
-.error_msg {
-  color: $errorColor;
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 8px;
-  // height: ;
-  visibility: hidden;
-  display: inline-block;
-  margin-bottom: 10px;
-}
-
-.error span {
-  background-color: $errorColor !important;
-  color: $white !important;
-}
-
-.error input[type="text"] {
-  border: 1px solid $errorColor !important;
-}
-
-.error ~ span.error_msg {
-  visibility: visible;
 }
 
 .currency_wrapper {
