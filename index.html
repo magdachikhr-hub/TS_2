@@ -6,6 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>mortgage calculator</title>
     <link rel="stylesheet" href="./src/input.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://ts-2-six.vercel.app/#webapp",
+            "name": "Mortgage Repayment Calculator",
+            "url": "https://ts-2-six.vercel.app/",
+            "description": "Free online mortgage repayment calculator that calculates monthly mortgage payments and total repayment costs. Supports repayment and interest-only mortgages, with GBP, USD and GEL currency options.",
+            "applicationCategory": "FinanceApplication",
+            "applicationSubCategory": "Mortgage Calculator",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "isAccessibleForFree": true,
+            "featureList": [
+              "Calculate monthly mortgage repayments",
+              "Calculate total mortgage repayment costs",
+              "Repayment mortgage calculations",
+              "Interest-only mortgage calculations",
+              "GBP currency support",
+              "USD currency support",
+              "GEL currency support",
+              "Adjustable mortgage amount",
+              "Adjustable mortgage term",
+              "Adjustable annual interest rate",
+              "Currency formatting"
+            ],
+            "about": {
+              "@id": "https://ts-2-six.vercel.app/#mortgage"
+            }
+          },
+          {
+            "@type": "MortgageLoan",
+            "@id": "https://ts-2-six.vercel.app/#mortgage",
+            "name": "Mortgage Loan",
+            "description": "A mortgage loan secured against real estate. This calculator helps users estimate monthly payments and total repayment costs based on their mortgage amount, loan term, annual interest rate and repayment type.",
+            "loanType": ["Repayment Mortgage", "Interest-Only Mortgage"],
+            "url": "https://schema.org/MortgageLoan"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <main>
